@@ -14,12 +14,14 @@ var symbols = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", 
 
 // function to generate password when button clicked
 var generatePassword = function() {
-  alert("Hello! Welcome to Password Generator!" +"\n" + "Please answer the following prompts and questions! Thank you!")
+  alert("Hello! Welcome to Password Generator!" + "\n" + "Please answer the following prompts and questions! Thank you!")
   
-    designateLength = parseInt(prompt("How many characters would you like your password to be?")); {
-    if (!designateLength) {
-      alert("Please enter a password length value.");
+    designateLength = parseInt(prompt("How many characters would you like your password to be?" + "\n" + "Please choose at least 8 and no more than 128.")); {
+    if (!designateLength || designateLength < 8 || designateLength > 128) {
+      alert("Please enter a password length value between 8 and 128. Try Again!");
+      generatePassword();
     }
+  
     else { 
       // Confirm different variables (characters) to include in password
       includeCapitalLetters = confirm("Would you like Capital Letters (i.e. A, B, C) in your password?" +"\n" + "Select Okay to include Capital Letters.");
@@ -97,7 +99,6 @@ var generatePassword = function() {
 
     // Transform the array of passwordArray into a string called passwordString, as my final output for the function generatePassword()
     var passwordString = passwordArray.join("");
-    console.log(passwordString)
     return passwordString;
   }
   
